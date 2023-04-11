@@ -1,5 +1,6 @@
 import MeetupDetail from '@/components/meetups/MeetupDetail';
 import { Meetup } from '@prisma/client';
+import { GetStaticProps, GetStaticPropsContext } from 'next';
 import React, { Fragment } from 'react';
 
 const meetup: Meetup = {
@@ -13,6 +14,23 @@ const meetup: Meetup = {
 
 function MeetupDetails() {
   return <MeetupDetail meetup={meetup} />;
+}
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const meetupId = context.params?.meetupId;
+
+  console.log(`meetupId: ${meetupId}`);
+
+  return {
+    props: { meetup },
+  };
+}
+
+export function getStaticPaths() {
+  return {
+    paths: [{ params: { meetupId: 'm1' } }, { params: { meetupId: 'm2' } }],
+    fallback: false,
+  };
 }
 
 export default MeetupDetails;
