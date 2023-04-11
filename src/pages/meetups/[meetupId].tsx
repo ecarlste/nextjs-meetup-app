@@ -20,13 +20,13 @@ function MeetupDetails(props: { meetup: Meetup }) {
 export async function getStaticProps(context: GetStaticPropsContext) {
   const meetupId = context.params?.meetupId as string;
 
-  console.log(`meetupId: ${meetupId}`);
   const meetup = await prisma.meetup.findFirstOrThrow({
     where: { id: meetupId },
   });
 
   return {
     props: { meetup },
+    revalidate: 60,
   };
 }
 
