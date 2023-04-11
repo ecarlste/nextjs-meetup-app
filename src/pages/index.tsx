@@ -1,4 +1,3 @@
-import Layout from '@/components/layout/Layout';
 import MeetupList from '@/components/meetups/MeetupList';
 import { Meetup } from '@prisma/client';
 import React from 'react';
@@ -24,6 +23,14 @@ const fakeMeetups: Meetup[] = [
 
 function HomePage() {
   return <MeetupList meetups={fakeMeetups} />;
+}
+
+export function getStaticProps() {
+  return {
+    props: {
+      meetups: fakeMeetups,
+    },
+  };
 }
 
 export default HomePage;
