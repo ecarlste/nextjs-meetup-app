@@ -2,8 +2,11 @@ import { FormEvent, useRef } from 'react';
 
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
+import { MeetupWithoutId } from '@/models/meetup';
 
-function NewMeetupForm(props) {
+function NewMeetupForm(props: {
+  onAddMeetup: (meetupData: MeetupWithoutId) => void;
+}) {
   const titleInputRef = useRef<HTMLInputElement>(null);
   const imageInputRef = useRef<HTMLInputElement>(null);
   const addressInputRef = useRef<HTMLInputElement>(null);
@@ -24,7 +27,7 @@ function NewMeetupForm(props) {
       description: enteredDescription,
     };
 
-    props.onAddMeetup(meetupData);
+    props.onAddMeetup(meetupData as MeetupWithoutId);
   }
 
   return (
