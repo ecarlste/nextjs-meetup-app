@@ -1,6 +1,6 @@
 import classes from './Card.module.css';
 
-function Card(props) {
+function Card(props: any) {
   return <div className={classes.card}>{props.children}</div>;
 }
 
