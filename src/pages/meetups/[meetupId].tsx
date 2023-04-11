@@ -2,10 +2,19 @@ import MeetupDetail from '@/components/meetups/MeetupDetail';
 import { prisma } from '@/lib/prisma';
 import { Meetup } from '@prisma/client';
 import { GetStaticProps, GetStaticPropsContext } from 'next';
+import Head from 'next/head';
 import React, { Fragment } from 'react';
 
 function MeetupDetails(props: { meetup: Meetup }) {
-  return <MeetupDetail meetup={props.meetup} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>{props.meetup.title}</title>
+        <meta name="description" content={props.meetup.description}></meta>
+      </Head>
+      <MeetupDetail meetup={props.meetup} />
+    </Fragment>
+  );
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {

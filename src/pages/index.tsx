@@ -1,10 +1,22 @@
 import MeetupList from '@/components/meetups/MeetupList';
 import { prisma } from '@/lib/prisma';
 import { Meetup } from '@prisma/client';
-import React from 'react';
+import Head from 'next/head';
+import React, { Fragment } from 'react';
 
 function HomePage(props: { meetups: Meetup[] }) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>NextJS Meetup App</title>
+        <meta
+          name="description"
+          content="Browse, join and create NextJS meetup groups!!!"
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </Fragment>
+  );
 }
 
 export async function getStaticProps() {
