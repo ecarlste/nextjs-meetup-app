@@ -1,3 +1,4 @@
+import Layout from '@/components/layout/Layout';
 import MeetupList from '@/components/meetups/MeetupList';
 import { Meetup } from '@prisma/client';
 import React from 'react';
