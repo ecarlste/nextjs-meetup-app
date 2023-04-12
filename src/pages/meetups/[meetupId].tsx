@@ -1,7 +1,7 @@
 import MeetupDetail from '@/components/meetups/MeetupDetail';
 import { prisma } from '@/lib/prisma';
 import { Meetup } from '@prisma/client';
-import { GetStaticProps, GetStaticPropsContext } from 'next';
+import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import React, { Fragment } from 'react';
 
@@ -43,7 +43,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
